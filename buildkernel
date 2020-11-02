@@ -1584,7 +1584,7 @@ check_key_file_if_on_efi_system_partition () {
             warning "Your keyfile partition is != the EFI system partition"
             warning "Please ensure that ${LUKSKEYFILE} is present, on partition"
             warning "${KEYFILEPARTUUID},"
-            warning "before attemping to reboot"
+            warning "before attempting to reboot"
         fi
     fi
 }
@@ -1615,7 +1615,7 @@ ensure_efi_partition_mounted() {
         if ((ARG_ASK==1)); then
             continue_yn "Would you like to mount it now"
         else
-            show "Attemping to mount it..."
+            show "Attempting to mount it..."
         fi
         if ! mount_and_remember "${EFIPATHMAP}" "${EFIROOTDIR}" "vfat"; then
             die "Failed to mount ${EFIPATHMAP}"
