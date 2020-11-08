@@ -1694,7 +1694,7 @@ conform_config_file() {
         # already added by INIT_SCRIPT support above
     else
         show "Setting Gentoo flags for systemd..."
-        set_kernel_config_list_to_y "GENTOO_LINUX_INIT_SYSTEMD" 
+        set_kernel_config_list_to_y "GENTOO_LINUX_INIT_SYSTEMD"
         # set up a few additional flags recommended in the wiki, but not forced on
         # by the above
         show "Setting additional recommended settings for systemd..."
@@ -1893,8 +1893,8 @@ create_initramfs_using_genkernel() {
     if ((DISABLE_LVM==0)); then
         GENKERNEL_OPTS+="--lvm "
     fi
-    GENKERNEL_OPTS+="--no-gpg --udev ${POSTCLEAR_FLAG} "
-    GENKERNEL_OPTS+="--kernel-config=\"${TARGETCONFIG}\" --busybox "
+    GENKERNEL_OPTS+="--no-gpg ${POSTCLEAR_FLAG} "
+    GENKERNEL_OPTS+="--kernel-config=${TARGETCONFIG} --busybox "
     GENKERNEL_OPTS+="--no-compress-initramfs "
     GENKERNEL_OPTS+="${ADDITIONALGENKERNELOPTS} ${PLYMOUTH_OPTS} initramfs"
     genkernel ${GENKERNEL_OPTS}
