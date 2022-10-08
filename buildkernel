@@ -699,8 +699,8 @@ find_all_efi_boot_entries() {
         else
             NEXTISACTIVE="0"
         fi
-        local NEXTUUID=$(egrep -o 'HD\([^(]*\)' <<<"${NEXTLINE}" | egrep -o '[[:xdigit:]]{8}(\-[[:xdigit:]]{4}){3}\-[[:xdigit:]]{12}')
-        local NEXTPATH=$(egrep -o 'File\([^(]*\)' <<<"${NEXTLINE}")
+        local NEXTUUID=$(grep -E -o 'HD\([^(]*\)' <<<"${NEXTLINE}" | grep -E -o '[[:xdigit:]]{8}(\-[[:xdigit:]]{4}){3}\-[[:xdigit:]]{12}')
+        local NEXTPATH=$(grep -E -o 'File\([^(]*\)' <<<"${NEXTLINE}")
         NEXTPATH="${NEXTPATH:5:-1}"
         local NEXTNAME="$(efibootmgr | grep "^${NEXTSIG}" | cut -c11-)"
         NEXTUUID="${NEXTUUID,,}"
